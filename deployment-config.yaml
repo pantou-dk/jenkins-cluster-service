@@ -1,0 +1,37 @@
+kind: DeploymentConfig
+apiVersion: v1
+metadata:
+  name: jenkins-cluster-service
+spec:
+  template:
+    metadata:
+      labels:
+        name: jenkins
+    spec:
+      containers:
+        -
+          name: jenkins
+          image: jenkins-cluster-service:latest
+          ports:
+            -
+              protocol: TCP
+              containerPort: 8080
+              name: console
+            -
+              protocol: TCP
+              containerPort: 5000
+              name: agent
+  replicas: 1
+  triggers:
+    - type: ConfigChange
+    - type: ImageChange
+      imageChangeParams:
+        automatic: true
+        containerNames:
+          - jenkins
+        from:
+          kind: ImageStreamTag
+          name: jenkins-cluster-service:latest
+  strategy:
+    type: Recreate
+  revisionHistoryLimit: 3
