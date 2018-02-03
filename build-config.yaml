@@ -1,0 +1,23 @@
+kind: BuildConfig
+apiVersion: v1
+metadata:
+  name: jenkins-cluster-service
+spec:
+  triggers:
+    -
+      type: GitHub
+      github:
+        secret: danelaw-build
+    -
+      type: ImageChange
+  source:
+    git:
+      uri: git@github.com:pantou-dk/jenkins-cluster-service.git
+    sourceSecret:
+      name: danelaw-build
+  strategy:
+    dockerStrategy: {}
+  output:
+    to:
+      kind: ImageStreamTag
+      name: jenkins-cluster-service:latest
