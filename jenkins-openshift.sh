@@ -6,4 +6,4 @@ fi
 
 echo "$@"
 
-/sbin/tini -- /usr/local/bin/jenkins.sh "$@"
+/usr/local/bin/jenkins.sh "$@"
