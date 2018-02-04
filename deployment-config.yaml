@@ -30,6 +30,7 @@ spec:
             -
               name: jenkins-data
               mountPath: /var/jenkins_home
+          serviceAccountName: jenkins
   replicas: 1
   triggers:
     - type: ConfigChange
