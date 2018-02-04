@@ -8,6 +8,11 @@ spec:
       labels:
         name: jenkins
     spec:
+      volumes:
+        -
+          name: jenkins-data
+          persistentVolumeClaim:
+            claimName: jenkins-data
       containers:
         -
           name: jenkins
@@ -21,6 +26,10 @@ spec:
               protocol: TCP
               containerPort: 5000
               name: agent
+          volumeMounts:
+            -
+              name: jenkins-data
+              mountPath: /var/jenkins_home
   replicas: 1
   triggers:
     - type: ConfigChange
