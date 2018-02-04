@@ -21,3 +21,12 @@ spec:
     to:
       kind: ImageStreamTag
       name: jenkins-cluster-service:latest
+  successfulBuildsHistoryLimit: 5
+  failedBuildsHistoryLimit: 5
+  resources:
+    limits:
+      memory: 128Mi
+      cpu: 100m
+    requests:
+      memory: 64Mi
+      cpu: 50m
