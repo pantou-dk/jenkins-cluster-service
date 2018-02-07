@@ -1,7 +1,9 @@
 #!/bin/bash
 
-if [ -f /usr/share/openshift/jenkins-plugins.txt ]; then
-    /usr/local/bin/install-plugins.sh < /usr/share/openshift/jenkins-plugins.txt
+mkdir -p /var/jenkins_home/ref
+
+if [ -d /usr/share/openshift/jenkins-plugins ]; then
+    /usr/local/bin/install-plugins.sh < /usr/share/openshift/jenkins-plugins/*
 fi
 
 /usr/local/bin/jenkins.sh "$@"
