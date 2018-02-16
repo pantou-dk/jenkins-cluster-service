@@ -1,1 +1,5 @@
+openshift-pipeline:latest
 openshift-client:latest
+openshift-login:latest
+openshift-sync:latest
+kubernetes:latest
