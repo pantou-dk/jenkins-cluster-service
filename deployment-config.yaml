@@ -17,6 +17,26 @@ spec:
         -
           name: jenkins
           image: jenkins-cluster-service:latest
+          livenessProbe:
+            failureThreshold: 6
+            httpGet:
+              path: /login
+              port: 8080
+              scheme: HTTP
+            initialDelaySeconds: 600
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 3
+          readinessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /login
+              port: 8080
+              scheme: HTTP
+            initialDelaySeconds: 10
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 3
           ports:
             -
               protocol: TCP
