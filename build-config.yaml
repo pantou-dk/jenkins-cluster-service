@@ -16,7 +16,8 @@ spec:
     sourceSecret:
       name: danelaw-build
   strategy:
-    dockerStrategy: {}
+    dockerStrategy:
+      forcePull: true
   output:
     to:
       kind: ImageStreamTag
