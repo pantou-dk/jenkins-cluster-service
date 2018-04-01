@@ -7,9 +7,9 @@ USER jenkins
 COPY jenkins-plugins.txt /tmp/
 RUN /usr/local/bin/install-plugins.sh < /tmp/jenkins-plugins.txt
 USER root
-RUN echo 2.0 > /usr/share/jenkins/ref/jenkins.install.UpgradeWizard.state && chmod 777 /usr/share/jenkins/ref/jenkins.install.UpgradeWizard.state
-COPY log.properties /usr/share/jenkins/ref/logging/
-RUN chmod 444 /usr/share/jenkins/ref/logging/log.properties
+OPY log.properties /usr/share/jenkins/ref/logging/
+COPY config.xml /usr/share/jenkins/ref/config/
+RUN chmod 444 /usr/share/jenkins/ref/logging/log.properties /usr/share/jenkins/ref/config/config.xml
 COPY jenkins-openshift.sh /usr/local/bin/jenkins-openshift.sh
 RUN chmod 777 /usr/local/bin/jenkins-openshift.sh
 USER jenkins
