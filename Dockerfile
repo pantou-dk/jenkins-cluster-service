@@ -6,7 +6,7 @@ USER jenkins
 COPY jenkins-plugins.txt /tmp/
 RUN /usr/local/bin/install-plugins.sh < /tmp/jenkins-plugins.txt
 USER root
-OPY log.properties /usr/share/jenkins/ref/logging/
+COPY log.properties /usr/share/jenkins/ref/logging/
 COPY config.xml /usr/share/jenkins/ref/config/
 RUN chmod 444 /usr/share/jenkins/ref/logging/log.properties /usr/share/jenkins/ref/config/config.xml
 COPY jenkins-openshift.sh /usr/local/bin/jenkins-openshift.sh
